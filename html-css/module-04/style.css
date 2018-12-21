@@ -28,23 +28,22 @@ body {
 
 .header-wrapper {
 	padding: 30px 0;
-	font-family: 'Roboto', 'Apial', sans-serif;
+	font-family: Roboto, Arial, sans-serif;
 }
 
-.logo span {
+.logo p {
 	display: block;
 	float: left;
 	font-size: 30px;
 	color: #666666;
 }
 
-.logo span::first-letter {
+.logo_first-letter {
 	color: #99ccff;
 	font-weight: bold;
 }
 
 .nav-item {
-	display: inline-block;
 	float: right;
 	margin: 0 10px;
 	list-style: none;
@@ -55,8 +54,8 @@ body {
 }
 
 .nav-item:first-child {
-	margin-right: 0px;
-	padding-right: 0px;
+	margin-right: 0;
+	padding-right: 0;
 }
 
 .list_link {
@@ -73,7 +72,7 @@ body {
 	margin-bottom: 75px;
 	position: relative;
 	text-align: center;
-	font-family: 'Roboto', 'Apial', sans-serif;
+	font-family: Roboto, Arial, sans-serif;
 	font-size: 48px;
 	font-weight: bold;
 	color: #515151;
@@ -92,7 +91,6 @@ body {
 }
 
 .article {
-	display: inline-block;
 	float: left;
 	margin: 15px;
 }
@@ -103,11 +101,11 @@ body {
 }
 
 .products:nth-of-type(4n) {
-	margin-right: 0px;
+	margin-right: 0;
 }
 
 .products:nth-of-type(4n-3) {
-	margin-left: 0px;
+	margin-left: 0;
 }
 
 .icon {
@@ -124,7 +122,7 @@ body {
 	opacity: 0.1;
 	width: 100%;
 	height: 100%;
-	top: 0px;
+	top: 0;
 	z-index: 1;	  
 }
 
@@ -139,14 +137,13 @@ body {
 
 .products_info {
 	height: 40px;
-	font-family: 'Roboto', 'Apial', sans-serif;
+	font-family: Roboto, Arial, sans-serif;
 	font-size: 18px;
 	font-weight: bold;
 	color: #ffffff;
 }
 
 .name_products {
-	display: inline-block;
 	width: 200px;
 	height: 100%;
 	background: #333333;
@@ -182,7 +179,7 @@ body {
 
 .news_headline {
 	position: relative;
-	font-family: 'News Cycle', 'Arial', sans-serif;
+	font-family: 'News Cycle', Arial, sans-serif;
 	font-weight: bold;
 	font-size: 18px;
 	line-height: 26px;
@@ -195,8 +192,8 @@ body {
 	position: absolute;
 	height: 3px;
 	width: 135px;
-	bottom: 0px;
-	left: 0px;
+	bottom: 0;
+	left: 0;
 	background: #66cc99;
 }
 
@@ -209,22 +206,22 @@ body {
 }
 
 .buttom {
-	margin: 10px 0px 25px;
+	margin: 10px 0 25px;
 	height: 50px;
 	width: 160px;
 	border: 1px solid #66cc99;
 	border-radius: 5px;
 	background: #66cc99;
-	font-family: 'Open Sans' 'Arial' sans-serif;
+	font-family: 'Open Sans', Arial, sans-serif;
 	font-size: 16px;
 	color: #ffffff;
 	cursor: pointer;
 }
 
 .news:first-of-type {
-	margin-left: 0px;
+	margin-left: 0;
 }
 
 .news:last-of-type {
-	margin-right: 0px;
+	margin-right: 0;
 }
