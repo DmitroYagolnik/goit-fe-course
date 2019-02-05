@@ -1,4 +1,4 @@
-/* @import './reset.css'; */
+@import './reset.css';
 @import './font.css';
 
 *,
@@ -57,6 +57,9 @@ a {
 	width: 90px;
 }
 
+button:hover {
+	cursor: pointer;
+}
 
 .account-button:active,
 .account-button:hover {
@@ -110,20 +113,41 @@ a {
 	border: 2px solid;
 	border-radius: 20px;
 	border-color: #ff6666;
-	background-color: transparent;
-	color: #ff6666;
 	margin: 0 auto;
 	font-size: 14px;
 	font-family: Montserrat, Helvetica, sans-serif;
 	font-weight: bold;
 	line-height: 1.2;
+}
+
+.header__partners-button {
+	background-color: #ff6666;
+	color: #ffffff;
+	text-shadow: 0 0 #000000;
+	transition: 
+		background-color 0.5s ease-in-out,
+		text-shadow 0.5s ease-in-out;
+}
+
+.header__partners-button:active,
+.header__partners-button:hover {
+	transition: 
+		background-color 0.5s ease-in-out,
+		text-shadow 0.5s ease-in-out;
+	background-color: #ff1a1a;
+	text-shadow: 2px 2px #000000;
+}
+
+.section__partners-button {
+	background-color: transparent;
+	color: #ff6666;	
 	transition: 
 		color 0.5s ease-in-out,
 		background-color 0.5s ease-in-out;
 }
 
-.partners-button:active,
-.partners-button:hover {
+.section__partners-button:active,
+.section__partners-button:hover {
 	transition: 
 		color 0.5s ease-in-out,
 		background-color 0.5s ease-in-out;
@@ -307,7 +331,7 @@ a {
 	}
 
 	.header__title--main {
-		margin-top: 146px;
+		margin: 146px auto 0;
 		width: 550px;
 	}
 

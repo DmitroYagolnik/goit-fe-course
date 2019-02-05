@@ -1,0 +1,6 @@
+@media (min-width: 1200px) {
+  .collection__item {
+    max-width: calc(25% - 10px);
+    flex-basis: calc(25% - 10px);
+  }
+}
