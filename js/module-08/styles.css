@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fullview,
+.preview > li > img{
+    border: 5px ridge #cccccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+img {
+    object-fit: contain;
+    max-width: 100%;
+}
+
+.preview {
+    list-style: none;
+    display: flex;
+}
+
+.preview > li {
+    filter: grayscale(100%);
+}
+
+.fullview {
+    display: flex;
+    align-items: center;
+}
+
+.preview > li.active {
+    border: 2px solid #fff;
+    filter: grayscale(0%) sepia(0%);
+}
