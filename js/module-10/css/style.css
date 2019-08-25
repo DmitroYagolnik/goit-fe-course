@@ -1,0 +1,267 @@
+@import './normalize.css';
+
+* {
+    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.information_container-wrapper {
+    width: 70%;
+    min-height: 100vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: greenyellow;
+}
+
+.information_container-title {
+    font-family: Garamond, Georgia, serif;
+    font-size: 21px;
+}
+
+.buttons-wrapper {
+    right: 0;
+    width: 30%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.users-cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user-card {
+    text-align: left;
+    border: 2px solid #333333;
+    width: 100%; 
+    padding: 15px;
+    margin-top: 10px;
+    border-collapse: collapse;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+th, td {
+    padding: 5px;
+}
+
+.field-name {
+    background: #FFF5EE;
+}
+
+.field-age {
+    background: #EEE5DE;
+}
+
+.field-id {
+    background: #CDC5BF;
+}
+
+form {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.signature_form {
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+}
+
+button,
+input[type=reset],
+input[type=submit] {
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    border: 1px solid #333333;
+}
+
+button:focus,
+button:active {
+    outline: none;
+    background-color: azure;
+    color: green;
+    border-color: green;
+}
+
+.functional-button {
+    width: 100%;
+    height: 75px;
+    margin: 10px 0;
+    font-size: 14px;
+    border-width: 3px;
+}
+
+input[type=reset],
+input[type=submit],
+.btn-close {
+    width: 150px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+input[type=submit] {
+    background: lightgreen;
+}
+
+input[type=reset] {
+    background: lightblue;
+}
+
+.btn-close {
+    margin: 10px;
+    background: lightcoral;
+}
+
+.user_interface-wrapper {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_interface-wrapper > button {
+    width: 45%;
+}
+
+
+@media (min-width: 768px) {
+
+    .information_container-wrapper {
+        width: 75%;
+    }
+
+    .information_container-title {
+        font-size: 36px;
+        margin: 20px;
+    }
+
+    
+    .users-cards-wrapper {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .user-card {
+        margin: 10px;
+        width: 45%;
+        font-size: 14px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    .signature_form {
+        display: flex;
+        flex-direction: row;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 22px;
+        padding-left: 15px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    input {
+        width: 55%;
+        padding-left: 10px;
+    }
+    
+
+    button {
+        border-width: 2px;
+    }
+
+    .buttons-wrapper {
+        width: 25%;
+        text-align: center;
+    }
+    
+    .functional-button {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .form_btn-wrapper,
+    .btn-close {
+        margin: 20px;
+    }
+
+    input[type=reset],
+    input[type=submit] {
+        margin: 0 20px;
+    }
+
+    input[type=reset],
+    input[type=submit],
+    .btn-close {
+        width: 150px;
+        font-size: 24px;
+    }
+    .btn-close {
+        margin: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+    
+    .signature_form {
+        width: 45%;
+        margin: auto;
+    }
+    .information_container-wrapper {
+        width: 100%;
+        padding-top: 80px;
+    }
+    
+    .information_container-title {
+        font-size: 42px;
+        margin: 30px;
+    }
+    
+    .user-card {
+        width: 30%;
+        font-size: 18px;
+    }
+
+    .buttons-wrapper {
+        flex-direction: row;
+        top: 0;
+        width: 100%;
+        height: 80px;
+        background-color: #fff;
+    } 
+
+    .functional-button {
+        margin: 10px;
+        font-size: 22px;
+        padding: 0;
+        height: auto;
+    }
+
+    .user_interface-wrapper {
+        width: 70%;
+        height: 75px;
+    }
+}
