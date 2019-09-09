@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Module-11 Home-task JS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main>
+        <form class="form js-form">
+          <div class="checkbox-wrapper">
+            <section>
+              <h2>Screen size</h2>
+              <ul>
+                <li><label><input type="checkbox" name="size" value="13"> 13"</label></li>
+                <li><label><input type="checkbox" name="size" value="15"> 15"</label></li>
+                <li><label><input type="checkbox" name="size" value="17"> 17"</label></li>
+              </ul>
+            </section>
+            <section>
+              <h2>Color</h2>
+              <ul>
+                <li><label><input type="checkbox" name="color" value="white"> white</label></li>
+                <li><label><input type="checkbox" name="color" value="gray"> gray</label></li>
+                <li><label><input type="checkbox" name="color" value="black"> black</label></li>
+              </ul>
+            </section>
+            <section>
+              <h2>Release date</h2>
+              <ul>
+                <li><label><input type="checkbox" name="release_date" value="2015"> 2015</label></li>
+                <li><label><input type="checkbox" name="release_date" value="2016"> 2016</label></li>
+                <li><label><input type="checkbox" name="release_date" value="2017"> 2017</label></li>
+              </ul>
+            </section>
+          </div>
+          <div class="button-wrapper">
+            <button type="submit">Filter</button>
+            <button type="reset">Clear</button>
+          </div>
+        </form>
+
+        <!-- Секція, в якій будуть рендеритися відфільтровані товари або повідомлення про помилку -->
+        <section class="products-container">
+          <ul class="products-list"></ul>
+        </section>
+
+    </main>
+
+    <!-- Шаблон карти товару -->
+    <template id="product_card-template">
+      <li class="product-item">
+        <article class="product-card">
+          <h3 class="name-product">{{name}}</h3>
+          <img class="img-product" src="{{img}}" alt="">
+          <p class="screen_size-product">Screen size: <span>{{size}}</span></p>
+          <p class="color-product">Color: <span>{{color}}</span></p>
+          <p class="release_date-product">Release date: <span>{{release_date}}</span></p>
+          <p class="descr-product">Description product: <span>{{descr}}</span></p>
+          <p class="price-product">Price: <span>{{price}}</span> $</p>
+        </article>
+      </li>
+    </template>
+
+    <!-- Шаблон для виведення на дисплей помилки, яка відбулася під час пошуку товару -->
+    <template id="error_message">
+      <li class="error_message-item">
+        <h3 class="error_message-title">{{typeSearchError}}</h3>
+      </li>
+    </template>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

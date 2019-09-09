@@ -1,0 +1,153 @@
+@import './normalize.css';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+main {
+    max-width: 100%;
+}
+
+form,
+.products-container {
+    width: 90%;
+    margin: 10px auto;
+    border: 3px solid darkgreen;
+    background-color: coral;
+    border-radius: 5px;
+}
+
+
+form section,
+.product-card {
+    border: 3px solid darkgreen;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 90%;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+form h2,
+.name-product,
+.error_message-title {
+    margin: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 22px;
+    text-align: center;
+}
+
+form ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+form li,
+.product-card > p {
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.button-wrapper {
+    text-align: center;
+}
+
+button {
+    border: 3px solid darkgreen;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 5px;
+    margin: 10px;
+    width: 125px;
+}
+
+.img-product {
+    width: 90%;
+    object-fit: contain;
+}
+
+.product-card p {
+    font-weight: bold;
+    text-align: left;
+}
+
+.product-card span {
+    font-weight: normal;
+}
+
+.price-product span {
+    font-weight: bold;
+}
+
+.product-card .price-product {
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .checkbox-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+
+    form section {
+        flex-basis: 30%;
+    }
+
+    form h2,
+    .name-product,
+    .price-product,
+    .error_message-title {
+        font-size: 26px;
+    }
+
+    form ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form li,
+    button,
+    .descr-product {
+        font-size: 20px;
+    }
+
+    .products-list {
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+
+    .product-item {
+        flex-basis: 50%;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    form section {
+        flex-basis: 30%;
+    }
+
+    form ul {
+        flex-direction: row;
+    }
+
+    .product-item {
+        flex-basis: 33%;
+    }
+
+    .error_message-item {
+        flex-basis: 100%;
+    }
+} 
+
