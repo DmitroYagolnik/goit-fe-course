@@ -190,7 +190,7 @@ function submitForm(event) {
     return
   }
 
-  renderTemplate(sourceProductCard, laptops, container);                  //  Рендериться відповідь, щодо наявних товарів
+  renderTemplate(sourceProductCard, searchResultArr, container);          //  Рендериться відповідь, щодо наявних товарів
 }
 
 /**
