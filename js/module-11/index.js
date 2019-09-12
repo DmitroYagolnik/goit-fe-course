@@ -134,6 +134,8 @@ const sourseErrorMessage = document.querySelector('#error_message')
 
 form.addEventListener('submit', submitForm);                                  //  Ставимо слухач на форму
 
+renderTemplate(sourceProductCard, laptops, container);                  //  При загрузці сторінки рендериться на дисплей всі наявні товари      
+
 //_______________________________________________________________________________________________________________________________
 //==================================================  Функції ===================================================================
 
@@ -145,48 +147,41 @@ form.addEventListener('submit', submitForm);                                  //
 function submitForm(event) {
 
   event.preventDefault();                               //  Видаляємо дії браузера за замовчуванням
+
+  const filter = {};                                    //  Об'єкт, ключами якого є значеннями чекбоксів, які обрав відвідувач сайту
+
+                                                        //  Ведеться пошук чекбоксів, які обрав відвідувач сайте
+  const selectedSize = checkboxSize.filter(input => input.checked);               //  Чекбокси, які відповідають за розмір екрану
+  const selectedColor = checkboxColor.filter(input => input.checked);             //  Чекбокси, які відповідають за колір пристрою
+  const selectedReleaseDate = checkboxReleaseDate.filter(input => input.checked); //  Чекбокси, які відповідають за дату релізу
   
-  const filter = {                                      //  Об'єкт, з значеннями чекбоксів, які обрав відвідувач сайту
-    size: checkboxSize.filter(input => input.checked)   //  в ключ записуємо тільки ті параметри, які вибрав відвідувач сайту
-    .map(elem => Number(elem.value)),                   //  перебираємо кожний елемент, додаючи в масив значення, приведене до числа
-    
-    color: checkboxColor.filter(input => input.checked)
-    .map(elem => elem.value),
-    
-    release_date: checkboxReleaseDate.filter(input => input.checked)
-    .map(elem => Number(elem.value))
+                                                        //  Записуємо ключі в об'єкт filter, якщо:
+  if (selectedSize.length > 0) {                        //  були обрані параметри "Розмір екрану":
+    filter.size = selectedSize.map(elem =>              //    Записуємо ключ в об'єкт filter всі обрані параметри,
+      Number(elem.value));                              //    кожне значення якого приводимо в число
   }
-  
-  let typeSearchErrorsArr = [];                         // Масив в який заносяться причини/помилки які відбулися під час пошуку товарів
 
-  /*  Якщо відвідувач сайту не вказав хоч один параметр пошуку, тоді виведеться на дисплей повідомлення з проханням, 
-  вказати критерій пошуку  */
-  if (filter.size.length === 0 || filter.color.length === 0 || filter.release_date.length === 0) {
+  if (selectedColor.length > 0) {                       //  були обрані параметри "Колір":
+    filter.color = selectedColor.map(elem =>            //    Записуємо ключ в об'єкт filter всі обрані параметри, щодо кольору 
+      elem.value);
+  }
 
-    if (filter.size.length === 0) {               //  У випадку коли користувачем не було обрано жодного параметру, щодо розміру дисплея
-      typeSearchErrorsArr.push({typeSearchError: 'Specify search option: "Screen size"'});
-    }
-
-    if (filter.color.length === 0) {              //  У випадку коли користувачем не було обрано жодного параметру, щодо кольору
-      typeSearchErrorsArr.push({typeSearchError: 'Specify search option: "Color"'});
-    }
-    if (filter.release_date.length === 0) {       //  У випадку коли користувачем не було обрано жодного параметру, щодо дати релізу
-      typeSearchErrorsArr.push({typeSearchError: 'Specify search option: "Release date"'});
-    }
-
-    renderTemplate(sourseErrorMessage, typeSearchErrorsArr, container);   //  Рендериться відповідь, щодо невказаних критеріїв пошуку
-    return
+  if (selectedReleaseDate.length > 0) {                 //  були обрані параметри, щодо дати релізу
+    filter.release_date = selectedReleaseDate.map(elem => Number(elem.value));
   }
 
   const searchResultArr = filterProductsByUserChoice(filter);             //  Записується результат пошуку товару за заданими критеріями
-
+  
   if (searchResultArr.length === 0) {
+    
 
-    typeSearchErrorsArr.push({
-      typeSearchError: 'Sorry, but the product with the selected characteristics is missing!'
-    });
-
-    renderTemplate(sourseErrorMessage, typeSearchErrorsArr, container);   //  Рендериться відповідь, щодо відсутності товару
+    //  Рендериться відповідь, щодо відсутності товару
+    renderTemplate(
+      sourseErrorMessage, 
+      {
+        typeSearchError: 'Sorry, but the product with the selected characteristics is missing!'
+      }, 
+      container);   
     return
   }
 
@@ -198,27 +193,14 @@ function submitForm(event) {
  * @param {obj} userCheked  - об'єкт, що містить ключі з значенням чекбоксів, які обрав відвідувач сайту
  */
 function filterProductsByUserChoice(userCheked) {
-  
-  let checkboxSize = [];                            //  Масив товарів, який задовольняє користувача, стосовно розміру товару
-  let checkboxColor = [];                           //  Масив товарів, який задовольняє користувача стосовно розмірів та кольру товару
-  let filteredProductsArray = [];                   //  Масив товарів, який задовольняє користувача стосовно всіх заданих параметрів
-          
-  userCheked.size.forEach(elem =>                   //  Перебираєм ключ, який містить розміри обрані відвідувачем сайту та
-    checkboxSize.push(...                           //  в масив checkboxSize, за допомогою spread, будуть добавлені
-      laptops.filter(element =>                     //  з масиву всіх товарів, лише ті:
-        element.size === elem)));                   //  які відповідають критеріям, щодо розміру товару
-                
-  userCheked.color.forEach(elem =>                  //  Перебираєм ключ, який містить кольори, які обрані відвідувачем сайту, та
-    checkboxColor.push(...                          //  в масив checkboxColor, за допомогою spread, будуть добавлені
-      checkboxSize.filter(element =>                //  з масиву товарів які задовольняють розміри відвідувача сайту, лише ті:
-        element.color === elem)));                  //  які відповідають критеріям, щодо кольру товару
-                  
-  userCheked.release_date.forEach(elem =>           //  Перебираєм ключ, який містить роки релізу, які обрані відвідувачем сайту, та
-    filteredProductsArray.push(...                  //  в масив filteredProductsArray, за допомогою spread, будуть добавлені
-      checkboxColor.filter(element =>               //  з масиву товарів які задовольняють критеріям розміру та кольору товару, лише ті:
-        element.release_date === elem)));           //  які відповідають критеріям, щодо рокам релізу
+  const filteredProductsArray = laptops.filter (laptop => {
 
-  return filteredProductsArray;
+    return (!userCheked.size || userCheked.size.includes(laptop.size)) 
+        && (!userCheked.color || userCheked.color.includes(laptop.color)) 
+        && (!userCheked.release_date || userCheked.release_date.includes(laptop.release_date))
+  })
+
+  return filteredProductsArray                                          //  На місці виклику функції повертаємо масив обраних товарів
 }
 
 /**
@@ -237,16 +219,21 @@ function removeChildrenElem (parentNode) {
 
 /**
  * Дана функція рендерить на дисплей картки товару, які відповідають вказаними критеріями, або причини невдалого пошуку
- * @param {*} source            - HTML-розмітка шаблону, який буде рендеритися
- * @param {array} arrayAnswers  - Масив елементів, які вставляються в шаблон
- * @param {*} parentContainer   - Місце в DOM-вузлі, для рендерингу
+ * @param {*} source                - HTML-розмітка шаблону, який буде рендеритися
+ * @param {arr or obj} optionAnswer - Елементів, які вставляються в шаблон
+ * @param {*} parentContainer       - Місце в DOM-вузлі, для рендерингу
  */
-function renderTemplate(source, arrayAnswers, parentContainer) {
+function renderTemplate(source, optionAnswer, parentContainer) {
 
   const template = Handlebars.compile(source);              //  Компіляція вибраного шаблону за допомогою Handlebars
+  let markup;                                               //  Створення HTML-розмітки відповідно до відповідей на запит користувача
 
-  const markup = arrayAnswers                               //  Створення HTML-розмітки відповідно до відповідей на запит користувача
-    .reduce((acc, answer) => acc + template(answer), ''); 
+  if (Array.isArray(optionAnswer)) {                        //  Якщо опції - масив, тоді створюючи розмітку, перебираємо кожний його елемент
+    markup = optionAnswer
+      .reduce((acc, answer) => acc + template(answer), ''); 
+  } else {
+    markup = template(optionAnswer)
+  }
 
   removeChildrenElem(parentContainer);                      //  Якщо в DOM-вузлі є елементи, тоді видаляємо їх
 
