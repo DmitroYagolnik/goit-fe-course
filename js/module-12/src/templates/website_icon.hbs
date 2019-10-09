@@ -1,0 +1,12 @@
+{{!-- Шаблон для рендерингу обраної веб-сторінки --}}
+<article class="website-icon">
+    <a class="icon-link" href={{url}} target="_blank">
+        {{#if successfulDataURL}}
+        <img class="website-logo" src={{image}} alt="icon" >
+        <p class="website-title">{{title}}</p>
+        {{else}}
+        <p class="website-title">{{url}}</p>
+        {{/if}}
+    </a>
+    <button class="del_website-icon">Видалити</button>
+</article>
